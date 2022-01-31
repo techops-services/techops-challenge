@@ -1,7 +1,7 @@
 
 ## Problem
 
-You have recently joined a new company as their lead DevOps Engineer. They would like you to lead the setup of their new blogging platform using [Ghost](https://ghost.org).
+You have recently joined a new company as their lead DevOps Engineer. They would like you to lead the setup of their new blogging platform using [Ghost](https://ghost.org/docs).
 
 Previously one of their engineers setup the server to host some old insecure Wordpress blog, without any version control, configuration management, backups, monitoring etc. This has been a major headache ever since, so now they brought in the big guns (You) to do a proper job.
 
