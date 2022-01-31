@@ -17,9 +17,9 @@ While the developers are writing code, you are tasked with making it easy and sa
 2. Install Ghost application + dependencies
 3. Setup the firewall to only allow SSH and Ghost traffic through
 4. Setup a cron-job that:
-  * dumps the database
-  * saves a snapshot of the production site under `/backup` directory
-  * mails you a summary every night
+    * dumps the database
+    * saves a snapshot of the production site under `/backup` directory
+    * mails you a summary every night
 5. Create a way for developers to push new changes to Ghost in an easy and repeatable way
 
 ## Deliverables
