@@ -24,6 +24,6 @@ While the developers are writing code, you are tasked with making it easy and sa
 
 ## Deliverables
 
-1. Git repo with Terraform manifest(s) (or any other code) to configure the VM instance
-2. Clear instructions for the developers on how they can deploy their Ghost code changes and view them
-3. A paragraph reflecting on the solution and pointing out what can be improved given more time going forward
+1. Git repo with Terraform manifest(s) (or any other automation system code) to provision and configure the VM instance.
+2. Very clear instructions for the developers on how they can provision this new infrastructure from scratch to deploy their own Ghost instance, push changes and view them.
+3. A paragraph reflecting on the solution and pointing out what can be improved given more time going forward.
