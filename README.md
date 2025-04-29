@@ -1,29 +1,56 @@
+# DevOps Engineer Technical Challenge
+
+Thank you for your interest in joining our team! We're excited to see your skills in action. This technical challenge is designed to give you an opportunity to showcase your expertise in modern DevOps practices and tooling, reflecting the kind of work we do here. We understand that you might have other commitments, so we kindly ask you to complete this exercise within 5 days.
 
 ## Problem
 
-You have recently joined a new company as their lead DevOps Engineer. They would like you to lead the setup of their new blogging platform using [Ghost](https://ghost.org/docs).
+As a rapidly growing DevOps services company, we embrace the latest technologies to build robust, scalable, and automated solutions for our clients. We need you to demonstrate your ability to design and implement a modern, cloud-native deployment workflow.
 
-Previously one of their engineers setup the server to host some old insecure Wordpress blog, without any version control, configuration management, backups, monitoring etc. This has been a major headache ever since, so now they brought in the big guns (You) to do a proper job.
+Your task is to deploy a simple "Hello World" web application (you can choose any programming language you prefer) to a Kubernetes cluster running on [Amazon Web Services (AWS)](https://aws.amazon.com/). The goal is to automate the entire process, from infrastructure provisioning to application deployment, using industry-standard tools and practices.
 
-The decision has been made to start from scratch with a freshly provisioned Ubuntu VM to host the Ghost application. The VM instance is to be provisioned and operate on [AWS free tier](https://aws.amazon.com/free/) which should be sufficient for development purposes for now. It is crucial that you make it as frictionless as possible for the developers to get started with the instance and any future operations.
+We expect the solution to leverage:
 
-Following the guides on Ghost’s website, you should setup a basic Ghost application running on an EC2 instance. Don’t worry about customizing it just yet, getting it to display the default page is fine.
+- **Cloud Provider:** [AWS](https://aws.amazon.com/)
+- **Kubernetes Service:** [AWS Elastic Kubernetes Service (EKS)](https://aws.amazon.com/eks/)
+- **Infrastructure as Code:** [Terraform](https://www.terraform.io/) (using [community modules](https://github.com/terraform-aws-modules) is encouraged, e.g., for VPC or EKS)
+- **Containerization:** [Docker](https://www.docker.com/)
+- **Package Management (Optional but Preferred):** [Helm](https://helm.sh/) (using community charts is acceptable)
+- **CI/CD:** [GitHub Actions](https://github.com/features/actions)
+- **Ingress (Preferred):** [Traefik Proxy](https://traefik.io/traefik/) or alternatively an AWS LoadBalancer Service.
 
-While the developers are writing code, you are tasked with making it easy and safe for them to continuously deploy their changes in the future. Since you know that the better job you do at automating the whole setup, the more free time you’ll have to do more fun stuff, you rely on your trusted tools (git, Terraform, Docker etc.) to make life easier for yourself and the developers.
+**Note on Costs:** Provisioning an AWS EKS cluster will incur minor costs (likely a few dollars). We understand this and appreciate your willingness to use these services for the challenge.
 
 ## Tasks
 
-1. Create a new user with home directory + SSH identity
-2. Install Ghost application + dependencies
-3. Setup the firewall to only allow SSH and Ghost traffic through
-4. Setup a cron-job that:
-    * dumps the database
-    * saves a snapshot of the production site under `/backup` directory
-    * mails you a summary every night
-5. Create a way for developers to push new changes to Ghost in an easy and repeatable way
+1.  **Application:** Create a basic "Hello World" web application. The specific language or framework is your choice.
+2.  **Containerization:** Write a `Dockerfile` to containerize your application.
+3.  **Infrastructure:** Use [Terraform](https://www.terraform.io/) to provision the necessary AWS infrastructure, including:
+    - A VPC (Virtual Private Cloud) suitable for EKS.
+    - An [AWS EKS](https://aws.amazon.com/eks/) cluster.
+    - Any other required resources (e.g., IAM roles, security groups).
+    - _Hint: Leverage existing community Terraform modules where appropriate._
+4.  **Deployment:**
+    - Configure Kubernetes manifests (Deployments, Services, etc.) to run your application on the EKS cluster.
+    - _Preferred:_ Package your application deployment using a [Helm](https://helm.sh/) chart.
+    - Expose your application to the internet, preferably using an Ingress controller like [Traefik](https://traefik.io/traefik/), or alternatively using a Kubernetes Service of type `LoadBalancer`.
+5.  **Automation:** Set up a [GitHub Actions](https://github.com/features/actions) workflow that automates the following upon pushing changes to the `main` branch:
+    - Builds the Docker image.
+    - Pushes the image to a container registry (e.g., Docker Hub, AWS ECR).
+    - Deploys the updated application to the EKS cluster (e.g., using `kubectl apply`, `helm upgrade`).
 
 ## Deliverables
 
-1. Git repo with Terraform manifest(s) (or any other automation system code) to provision and configure the VM instance.
-2. Very clear instructions for the developers on how they can provision this new infrastructure from scratch to deploy their own Ghost instance, push changes and view them.
-3. A paragraph reflecting on the solution and pointing out what can be improved given more time going forward.
+1.  **Git Repository:** A publicly accessible Git repository (e.g., on GitHub) containing all the necessary code:
+    - Application source code.
+    - `Dockerfile`.
+    - Terraform code (`.tf` files).
+    - Kubernetes manifests (`.yaml` files) and/or Helm chart (`Chart.yaml`, templates, `values.yaml`).
+    - GitHub Actions workflow file(s) (`.github/workflows/*.yaml`).
+2.  **README.md:** Clear instructions within the repository's `README.md` file explaining:
+    - Prerequisites (e.g., AWS account setup, AWS credentials configuration, GitHub secrets needed for Actions), no need to actually publish secrets.
+    - How to provision the infrastructure using Terraform.
+    - How to trigger the CI/CD pipeline and deploy the application.
+    - How to access the deployed "Hello World" application.
+3.  **Reflection:** A short paragraph in the `README.md` reflecting on your solution. Discuss your design choices, any challenges encountered, and potential improvements or areas you would explore further given more time (e.g., monitoring, logging, security hardening, cost optimization).
+
+Good luck! We look forward to seeing your solution.
