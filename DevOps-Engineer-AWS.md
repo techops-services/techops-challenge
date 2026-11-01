@@ -1,4 +1,4 @@
-# DevOps Engineer Technical Challenge
+# DevOps Engineer Technical Challenge (AWS)
 
 Thank you for your interest in joining our team! We're excited to see your skills in action. This technical challenge is designed to give you an opportunity to showcase your expertise in modern DevOps practices and tooling, reflecting the kind of work we do here. We understand that you might have other commitments, so we kindly ask you to complete this exercise within 5 days.
 
